@@ -42,32 +42,30 @@ void main(){
 
 
 	puts("Welcome to the Currency Converter");
-	puts("Supported currencies include: USD, EUR, YEN, GBP, CHF, AUD, CAD, SEK, HKD, NOK");
+	//puts("Supported currencies include: USD, EUR, YEN, GBP, CHF, AUD, CAD, SEK, HKD, NOK");
 
-	puts("Please enter in base currency");
+	puts("Please enter in base currency: ");
 	scanf("%s", &currencyBase);
 
 	for(i = 0; i < 3; i++){
 		currencyBaseTemp[i] = tolower(currencyBase[i]);
 	}
 
-	if(strncmp(currencyBase, "usd", 4)){
-		puts("Please enter in amount of USD");
+	puts("Please enter in currency you want to convert to: ");
+	scanf("%s", &currencyNew);
+
+	if(!strncmp(currencyNew, "usd", 4)){
+		puts("Please enter in amount of USD: ");
 		currency1 = getData();
-		puts("Please enter in currency you want to convert to");
-		scanf("%s", &currencyNew);
-		printf("Please enter in Exchange Rate to %s", currencyNew);
-		conversion = getData();
-		
-		displayResults(toForeign(currency1, conversion));
-	} else{
-		printf("Please enter in amount of %s", currencyBase);
-		currency1 = getData();
-		puts("Please enter in currency you want to convert to");
-		scanf("%s", &currencyNew);
-		printf("Please enter in Exchange Rate to %s", currencyNew);
+		printf("Please enter in Exchange Rate to USD: ");
 		conversion = getData();
 		displayResults(toDollars(currency1, conversion));
+	} else{
+		printf("Please enter in amount of %s: ", currencyBase);
+		currency1 = getData();
+		printf("Please enter in Exchange Rate to %s: ", currencyNew);
+		conversion = getData();
+		displayResults(toForeign(currency1, conversion));
 	}
 
 	getchar();
